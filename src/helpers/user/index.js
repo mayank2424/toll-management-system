@@ -3,7 +3,6 @@
  */
 
 const { UserModel } = require('@models/index');
-const requestIp = require('request-ip');
 
 class UserHelper {
     /**
