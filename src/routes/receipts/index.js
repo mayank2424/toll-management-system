@@ -6,6 +6,7 @@
     strict        : true,
 });
 const { ReceiptsController } = require('@controllers/index');
+const ReceiptController = require('@controllers/receipt');
 const { checkError } = require('@helper/validation');
 
 
@@ -28,7 +29,7 @@ router.get('/receipt', ReceiptsController.checkReceipt);
 /**
  * @description Delete single receipt
  */
-// router.delete('/delete')
+router.delete('/delete/:id', ReceiptController.deleteReceipt);
 
 
 module.exports = router;

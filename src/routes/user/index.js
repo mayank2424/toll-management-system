@@ -6,7 +6,7 @@ const router = require('express').Router({
     caseSensitive : true,
     strict        : true,
 });
-const { isAdmin, publicAuthMiddleware } = require('@middlewares/auth')
+const { isAdmin } = require('@middlewares/auth')
 const { UserController, AuthController } = require('@controllers/index');
 
  /**

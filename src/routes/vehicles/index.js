@@ -19,8 +19,12 @@ router.post('/add', VehiclesController.addNewVehicle);
 /**
  * @description Delete Single vehicle
  */
-// router.delete('/remove', )
+router.delete('/delete/:id', VehiclesController.deleteVehicle);
 
+/**
+ * @description List all vehicles
+ */
+router.get('/list', VehiclesController.listAll)
 
 module.exports = router;
 

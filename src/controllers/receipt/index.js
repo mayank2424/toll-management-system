@@ -82,6 +82,25 @@
                 response: error.message
             });
         }
+     },
+
+     /**
+      * Delete Single Receipt
+      */
+     deleteReceipt: async(req, res) => {
+        try {
+            const { id } = req.params;
+            const { error, response } = await ReceiptService.deleteReceipt(id);
+            return res.status(httpStatus.OK).json({
+                status: httpStatus.OK,
+                response
+            });
+         } catch(error) {
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                response: error.message
+            });
+        }
      }
 
 

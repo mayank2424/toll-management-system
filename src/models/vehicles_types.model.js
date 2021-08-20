@@ -43,3 +43,16 @@
      return Vehicles.findOneAndUpdate(query, condition, options)
      .lean()
  }
+
+
+  //Read sortSelected By Key
+  exports.readSortSelectedByKey = async(query, select = [], populate = [], skip = 0, sort = {}, limit=20) => {
+    const response = await Vehicles.find(query)
+        .populate(populate)
+        .select(select)
+        .sort(sort)
+        .skip(skip)
+        .limit(limit)
+        .lean();
+    return response;
+};

@@ -68,7 +68,7 @@
              }
          ];
          const sort = { createdAt: -1 };
-         const skip = (offset - 1) * limit;
+         const skip = ((offset || 1) - 1) * limit;
          const response = await RecieptModel.readSortSelectedByKey(
              {},
              [], 
@@ -101,6 +101,19 @@
       */
      getSingleReceiptByQuery: (query) => {
          return RecieptModel.readOneByKey(query);
+     },
+
+     /**
+      * Delete Receipt
+      */
+     deleteReceipt: async (id) => {
+         const response = await RecieptModel.delete({
+             _id: id
+         });
+         if(response && !response.n) {
+            throw Error('Receipt Not found')
+         };
+         return response;
      }
  
  }

@@ -46,7 +46,6 @@
 
   //Read sortSelected By Key
   exports.readSortSelectedByKey = async(query, select = [], populate = [], skip = 0, sort = {}, limit=20) => {
-    console.log(query, select, populate, skip , sort, limit)
     const response = await Reciept.find(query)
         .populate(populate)
         .select(select)
@@ -56,3 +55,8 @@
         .lean();
     return response;
 };
+
+//Delete one
+exports.delete = async(query) => {
+    return Reciept.deleteOne(query);
+}   

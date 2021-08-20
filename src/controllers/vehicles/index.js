@@ -10,7 +10,8 @@
  
      /**
       * @description Add new vehicle type
-      * @param {Object} headers
+      * @param {*} req
+      * @param {*} res
       */
      addNewVehicle: async (req, res) => {
          try {
@@ -40,6 +41,48 @@
              });
          }
      },
+
+     /**
+      * @description Delete vehicle
+      * @param {*} req
+      * @param {*} res
+      */
+     deleteVehicle: async (req, res) => {
+         try {
+            const { id } = req.params;
+            await VehiclesService.deleteVehicleType(id);
+            return res.status(httpStatus.OK).json({
+                status: httpStatus.OK,
+                response: 'OK'
+            });
+         } catch(error) {
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                response: error.message
+            });
+         }
+     },
+
+     /**
+      * @description List all vehicles
+      * @param {*} req
+      * @param {*} res
+      */
+    listAll: async (req, res) => {
+        try {
+           const { limit, offset } = req.query;
+           const response = await VehiclesService.listAllVehicles(limit, offset );
+           return res.status(httpStatus.OK).json({
+               status: httpStatus.OK,
+               response,
+           });
+        } catch(error) {
+           return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+               status: httpStatus.INTERNAL_SERVER_ERROR,
+               response: error.message
+           });
+        }
+    },
 
  };
  
