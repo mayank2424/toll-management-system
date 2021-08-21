@@ -25,7 +25,7 @@ exports.addUser = checkSchema({
         errorMessage: 'Please provide valid gender(male/female/others)'
     },
     contact_number: {
-        isMobilePhone: true,
+        notEmpty: true,
         errorMessage: 'Please provide valid contact number'
     }
 })

@@ -55,9 +55,9 @@ test("POST Add user with already existing user /v1/user/add", async () => {
 test("POST/ Add user with super admin account /v1/user/add", async () => {
   await server.post("/v1/user/add")
     .send({
-      "email": `new_usser@toll_${(Math.random() + 1).toString(36).substring(4)}.com`,
+      "email": `new_user_toll_${(Math.random() + 2).toString(36).substring(4)}@g.com`,
       "password": "new_user",
-      "name": "User 2",
+      "name": "User 2", 
       "gender": "female",
       "contact_number": "+91-9953338507"
   })

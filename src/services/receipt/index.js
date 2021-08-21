@@ -91,7 +91,7 @@
 
         if(!receipt) return { error: false, response: 'Not Found' };
         //Check if Receipt is two way then pass
-        const is_valid_issue_date = moment(receipt.issue_date).isBetween(now.startOf('day').toDate(), now.endOf('day').toDate());
+        const is_valid_issue_date = moment(receipt.issue_date).isBetween(now.subtract(1, 'day').startOf('day').toDate(), now.add(1, 'day').endOf('day').toDate());
         if(receipt.trip_type === 'two_way' && is_valid_issue_date) return { error: false, response: 'Pass vehicle' };
         return { error: false, response: 'Receipt Expired'}
      },
