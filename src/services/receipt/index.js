@@ -65,6 +65,10 @@
              { 
                  path: 'vehicle_category',
                  select: 'penalty_amount fare_amount is_heavy_vehicle class_type'
+             },
+             {
+                 path: 'issued_by',
+                 select: '-_id name email gender contact_number'
              }
          ];
          const sort = { createdAt: -1 };

@@ -69,7 +69,9 @@
          const response = await VehiclesModel.readSortSelectedByKey(
                {},
                [], 
-               [],
+               [
+                  { path: 'added_by', select: '-_id name email gender contact_number'}
+               ],
                parseInt(skip),
                sort, 
                parseInt(limit)

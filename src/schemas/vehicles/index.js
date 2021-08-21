@@ -6,7 +6,7 @@
  const VehiclesTypesSchema = new mongoose.Schema({
     added_by: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     class_type: {
         type: String,
