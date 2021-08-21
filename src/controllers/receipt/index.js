@@ -93,7 +93,7 @@
             const { error, response } = await ReceiptService.deleteReceipt(id);
             return res.status(httpStatus.OK).json({
                 status: httpStatus.OK,
-                response
+                response: 'OK'
             });
          } catch(error) {
             return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({

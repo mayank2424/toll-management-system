@@ -17,38 +17,3 @@ exports.validateSignInRequest = checkSchema({
         errorMessage: authResponseConfig.password.required
     }
 })
-
- 
-exports.validateSignUpRequest = checkSchema({
-    email: {
-        notEmpty: true,
-        isEmail: true,
-        errorMessage: "Please provide valid email"
-    },
-    password: {
-        notEmpty: true,
-        isString: true,
-        errorMessage: "Password is required"
-    },
-    name: {
-        notEmpty: true,
-        isString: true,
-        errorMessage: "Please provide valid name"
-    }
-})
-
-
-exports.isUserExist = async (req, res, next) => {
-    const { email } = req.body;
-    if(!email) return  res.status(httpStatus.NOT_FOUND).json({
-        status: httpStatus.NOT_FOUND,
-        response: "User not exist"
-    });
-    const user = await UserService.getUserByEmail(email, []);
-    if(!user) return res.status(httpStatus.NOT_FOUND).json({
-        status: httpStatus.NOT_FOUND,
-        response: "User not exist"
-    });
-    req.body.user = user;
-    next();
-}

@@ -7,19 +7,28 @@
 });
 const { VehiclesController } = require('@controllers/index');
 const { checkError } = require('@helper/validation');
+const { addVehicle, deleteVehicle } = require('@validators/vehcile.validators');
 
 
 //All Route methods
 
  /**
  * @desscription Add new vehicle
- */
-router.post('/add', VehiclesController.addNewVehicle);
+ */ 
+router.post('/add',    
+    addVehicle,
+    checkError,
+    VehiclesController.addNewVehicle
+);
 
 /**
  * @description Delete Single vehicle
  */
-router.delete('/delete/:id', VehiclesController.deleteVehicle);
+router.delete('/:id', 
+    deleteVehicle,
+    checkError,
+    VehiclesController.deleteVehicle
+);
 
 /**
  * @description List all vehicles

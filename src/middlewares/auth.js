@@ -36,7 +36,6 @@ exports.isAdmin = (req, res, next) => {
 
 exports.isStaff = (req, res, next) => {
     const { user } = req;
-    console.log({user});
     if(!user || !user.roles || !user.roles.length || !user.roles.includes('staff')) {
         return res.status(httpStatus.FORBIDDEN).json({
             status: httpStatus.FORBIDDEN,

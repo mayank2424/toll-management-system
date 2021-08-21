@@ -64,7 +64,7 @@
          const toPopulate = [
              { 
                  path: 'vehicle_category',
-                 select: 'penalty_amount fare_amount is_heavy_vehicle'
+                 select: 'penalty_amount fare_amount is_heavy_vehicle class_type'
              }
          ];
          const sort = { createdAt: -1 };

@@ -42,6 +42,27 @@ const UserService = {
             query,
             condition,
         )
+    },
+
+    /**
+     * @description List all users
+     */
+    listUsers: async() => {
+        return UserModel.readSelectedByKey({}, ['name email _id gender contact_number roles'])
+    },
+
+    /**
+     * @description Delete user
+     * @param { ObjectId } userId
+     */
+    deleteUser: async (userId) => {
+        const response = await UserModel.delete({
+            _id: userId
+        })
+        if(response && !response.n) {
+           throw Error("User doesn't exist")
+        };
+        return response;
     }
 }
 

@@ -7,9 +7,7 @@ const router = require('express').Router({
 });
 const { AuthController } = require('@controllers/index');
 const { checkError } = require('@helper/validation');
-const { validateSignUpRequest, 
-    validateSignInRequest, 
-} = require('@validators/auth.validator');
+const { validateSignInRequest } = require('@validators/auth.validator');
 const { isAdmin, publicAuthMiddleware } = require('@middlewares/auth')
 
 //All Route methods

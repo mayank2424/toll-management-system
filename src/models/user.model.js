@@ -33,7 +33,7 @@ exports.readOneByKey = async(query, select = [], populate = []) => {
 exports.readSelectedByKey = async(query, select = [], populate = []) => {
     const users = await User.find(query)
         .populate(populate)
-        .select(select)
+        .select(select.join(' '))
         .lean();
     return users;
 };
@@ -42,4 +42,9 @@ exports.readSelectedByKey = async(query, select = [], populate = []) => {
 exports.update = async(query, condition, options = { new: true, runValidators: true }) => {
     return User.findOneAndUpdate(query, condition, options)
     .lean()
+}
+
+//Delete Single
+exports.delete = async(query) => {
+    return User.deleteOne(query)
 }

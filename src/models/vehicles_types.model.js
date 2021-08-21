@@ -56,3 +56,8 @@
         .lean();
     return response;
 };
+
+//Delete one
+exports.delete = async(query) => {
+    return Vehicles.deleteOne(query);
+}   

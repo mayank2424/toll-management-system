@@ -14,6 +14,10 @@ const VehiclesRouter = require('../vehicles');
 //Middlewares
 const { publicAuthMiddleware, isAdmin, isStaff } = require('@middlewares/auth');
 
+router.get('/', (req, res) => res.status(200).json({
+    status: 200,
+    response: 'OK'
+}))
 router.use('/auth', AuthRouter);
 router.use('/user', publicAuthMiddleware, UserRouter);
 router.use('/receipts', publicAuthMiddleware, isStaff, ReceiptRouter);
